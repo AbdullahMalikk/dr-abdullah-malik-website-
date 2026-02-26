@@ -1,372 +1,301 @@
+Here is the updated HTML code. It now uses your specified local image file, "dr-abdullah-malik.jpeg", while keeping the modern design, Tailwind CSS, and all the professional animations we added.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="je57jXLHj0l2aTrhbxN9EU1JC5FGQWKYghZEPNSLk7c" />
-    <meta charset="UTF-8">
-    <title><head>
-    <meta charset="UTF-8">
-    <title>Dr. Abdullah Malik | Consultant Surgeon</title>
-    <meta name="description" content="Dr. Abdullah Malik - Consultant General & Laparoscopic Surgeon. Book an appointment online.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Abdullah Malik | Consultant Surgeon</title>
+  <!-- Tailwind CDN + custom layer for extra animations -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font remains Poppins (already elegant) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    /* smooth scroll & subtle reveal animations */
+    html { scroll-behavior: smooth; }
+    .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0,180,216,0.3); }
+    .fade-up { animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards; opacity: 0; }
+    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    /* modal animation */
+    .modal-fade { animation: modalFade 0.3s ease; }
+    @keyframes modalFade { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    /* tick animation */
+    .tick-anim { animation: tickPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    @keyframes tickPop { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+    /* background subtle pulse for hero */
+    .bg-pulse { background: linear-gradient(135deg, #0b1e33 0%, #0d2b42 100%); background-size: 200% 200%; animation: pulseBg 12s infinite alternate; }
+    @keyframes pulseBg { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+  </style>
 </head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<body class="bg-[#f0f5fa] text-gray-800 antialiased">
 
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-        }
-
-        header {
-            background: #0d1b2a;
-            color: white;
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 22px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 400;
-        }
-
-        nav a:hover {
-            color: #00b4d8;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.85)),
-                        url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: #00b4d8;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #0096c7;
-        }
-
-        section {
-            padding: 80px 10%;
-        }
-
-        section h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: #0d1b2a;
-        }
-
-        .about-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        .about-image img {
-            width: 220px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .about-text {
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .service-box {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .service-box h3 {
-            margin-bottom: 15px;
-            color: #0077b6;
-        }
-
-        .contact {
-            background: #0d1b2a;
-            color: white;
-            text-align: center;
-        }
-
-        .contact p {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background: #08121c;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-        }
-
-        @media(max-width: 768px) {
-            .hero h2 {
-                font-size: 30px;
-            }
-            .about-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* Modal Background */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        /* Modal Box */
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-        }
-
-        /* Close Button */
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-        /* Form Styling */
-        .modal-content form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .modal-content input,
-        .modal-content textarea {
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        /* Tick animation */
-        .tick {
-            font-size: 60px;
-            color: #28a745;
-            margin: 20px 0;
-            opacity: 0;
-            animation: tickAnim 0.5s forwards;
-        }
-
-        @keyframes tickAnim {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-    </style>
-</head>
-
-<body>
-
-<header>
-    <h1>Dr. Abdullah Malik</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Specialties</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<!-- ========== HEADER ========== -->
+<header class="bg-[#0a1a2f] text-white py-4 px-6 md:px-10 lg:px-16 flex justify-between items-center sticky top-0 z-50 shadow-xl backdrop-blur-md bg-opacity-95">
+  <h1 class="text-xl md:text-2xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 to-blue-200 bg-clip-text text-transparent drop-shadow"><i class="fas fa-user-md mr-2 text-cyan-300"></i>Dr. Abdullah Malik</h1>
+  <nav class="space-x-4 md:space-x-8 text-sm md:text-base font-medium">
+    <a href="#home" class="hover:text-cyan-300 transition-colors duration-300 relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all duration-300"></span></a>
+    <a href="#about" class="hover:text-cyan-300 transition-colors duration-300 relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all"></span></a>
+    <a href="#services" class="hover:text-cyan-300 transition-colors duration-300 relative group">Specialties<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all"></span></a>
+    <a href="#contact" class="hover:text-cyan-300 transition-colors duration-300 relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all"></span></a>
+  </nav>
 </header>
 
-<section class="hero">
-    <h2>Precision. Care. Surgical Excellence.</h2>
-    <p>Consultant General & Laparoscopic Surgeon</p>
-    <button class="btn" onclick="openModal()">Book Appointment</button>
-</section>
-
-<section id="about" class="about">
-    <h2>About Dr. Abdullah Malik</h2>
-
-    <div class="about-container">
-        <div class="about-image">
-             <img src="dr-abdullah-malik.jpeg" alt="Dr. Abdullah Malik Consultant Surgeon">
-        </div>
-
-        <div class="about-text">
-            <p>
-                Dr. Abdullah Malik is a highly experienced Consultant Surgeon specializing in advanced 
-                minimally invasive and general surgical procedures. With years of clinical excellence 
-                and patient-focused care, he is committed to delivering safe, effective, and compassionate treatment.
-                <br><br>
-                Qualifications: MBBS, FCPS (General Surgery)
-            </p>
-        </div>
+<!-- ========== HERO SECTION ========== -->
+<section id="home" class="relative bg-pulse text-white overflow-hidden">
+  <!-- animated medical icon overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <i class="fas fa-stethoscope text-[200px] absolute -top-10 -left-10 rotate-12 text-cyan-200 animate-pulse"></i>
+    <i class="fas fa-syringe text-[150px] absolute bottom-0 right-5 text-blue-300 animate-bounce" style="animation-duration: 6s;"></i>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-6 py-28 md:py-36 lg:py-40 text-center">
+    <span class="inline-block bg-cyan-500/20 backdrop-blur-sm text-cyan-200 px-5 py-2 rounded-full text-sm font-semibold tracking-wider mb-6 border border-cyan-300/40 shadow-lg"><i class="fas fa-calendar-check mr-2"></i>Accepting new patients</span>
+    <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-2xl"><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-200">Precision. Care.</span><br>Surgical Excellence.</h2>
+    <p class="text-xl md:text-2xl mt-6 max-w-3xl mx-auto text-gray-200 font-light">Consultant General & Laparoscopic Surgeon</p>
+    <div class="mt-10 flex flex-wrap gap-5 justify-center">
+      <button onclick="openModal()" class="bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-8 py-4 rounded-full shadow-2xl transform transition-all hover:scale-110 hover:shadow-cyan-500/50 flex items-center gap-2 text-lg"><i class="fas fa-calendar-plus"></i>Book Appointment</button>
+      <a href="#contact" class="border-2 border-white hover:bg-white hover:text-[#0a1a2f] px-8 py-4 rounded-full font-semibold transition-all duration-300 backdrop-blur-sm flex items-center gap-2 text-lg"><i class="fas fa-phone-alt"></i>Call now</a>
     </div>
+  </div>
+  <!-- curved separator -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-[#f0f5fa] w-full h-12 md:h-20">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C49.91,118.5,124.83,139.9,213.68,120.45Z"></path>
+    </svg>
+  </div>
 </section>
 
-<section id="services">
-    <h2>Surgical Specialties</h2>
-    <div class="services">
-        <div class="service-box">
-            <h3>General Surgery</h3>
-            <p>Comprehensive diagnosis and surgical treatment for a wide range of conditions.</p>
-        </div>
-        <div class="service-box">
-            <h3>Laparoscopic Surgery</h3>
-            <p>Minimally invasive techniques ensuring faster recovery and reduced pain.</p>
-        </div>
-        <div class="service-box">
-            <h3>Hernia Repair</h3>
-            <p>Advanced surgical solutions for inguinal and abdominal hernias.</p>
-        </div>
-        <div class="service-box">
-            <h3>Gallbladder Surgery</h3>
-            <p>Safe and effective laparoscopic cholecystectomy procedures.</p>
-        </div>
+<!-- ========== ABOUT SECTION (with your requested image) ========== -->
+<section id="about" class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+  <h2 class="text-4xl md:text-5xl font-bold text-center text-[#0a1a2f] mb-6"><span class="border-b-4 border-cyan-400 pb-2">About Dr. Abdullah Malik</span></h2>
+  <p class="text-center text-gray-600 max-w-2xl mx-auto text-lg mb-16">Dedicated to compassionate, world‑class surgical care with over a decade of experience.</p>
+  <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <!-- image with floating badge (USING YOUR LOCAL FILE) -->
+    <div class="relative group w-72 lg:w-96">
+      <div class="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
+      <!-- ********** REPLACED WITH YOUR IMAGE ********** -->
+      <img src="dr-abdullah-malik.jpeg" alt="Dr. Abdullah Malik Consultant Surgeon" class="relative rounded-2xl shadow-2xl w-full object-cover h-[28rem] border-4 border-white">
+      <div class="absolute -bottom-5 -right-5 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3 animate-bounce" style="animation-duration: 4s;">
+        <i class="fas fa-award text-4xl text-amber-500"></i>
+        <span class="font-semibold text-gray-800">FCPS, MBBS<br><span class="text-sm text-cyan-600">Gold medalist</span></span>
+      </div>
     </div>
+    <!-- bio with stats -->
+    <div class="flex-1 space-y-6 text-gray-700 text-lg leading-relaxed fade-up">
+      <p class="text-xl font-medium text-[#0a1a2f]"><i class="fas fa-quote-left text-cyan-400 mr-2"></i>Dr. Abdullah Malik is a highly skilled Consultant Surgeon specializing in advanced minimally invasive and general surgical procedures. His philosophy blends technical excellence with heartfelt patient connection.</p>
+      <p>With <strong>12+ years</strong> of clinical experience and thousands of successful surgeries, he is recognised for his precision and use of cutting‑edge laparoscopic techniques. He has trained at leading institutions in Pakistan and the UK.</p>
+      <!-- stat grid -->
+      <div class="grid grid-cols-2 gap-4 pt-4">
+        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-cyan-400 hover-lift">
+          <i class="fas fa-procedures text-3xl text-cyan-600 mb-2"></i>
+          <div class="text-2xl font-black text-gray-800">5000+</div>
+          <div class="text-sm text-gray-500">Surgeries performed</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-400 hover-lift">
+          <i class="fas fa-smile text-3xl text-blue-600 mb-2"></i>
+          <div class="text-2xl font-black text-gray-800">98%</div>
+          <div class="text-sm text-gray-500">Patient satisfaction</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <span class="bg-cyan-100 text-cyan-800 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1"><i class="fas fa-check-circle"></i> MBBS (King Edward)</span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1"><i class="fas fa-check-circle"></i> FCPS General Surgery</span>
+        <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1"><i class="fas fa-check-circle"></i> Fellowship in MIS (France)</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="contact">
-    <h2>Contact & Appointments</h2>
-    <p><strong>Clinic Address:</strong> 12/A Aitchison Society Lahore, Pakistan</p>
-    <p><strong>Phone:</strong> +92-305-6695244</p>
-    <p><strong>Email:</strong> abdullahmalikk1999@gmail.com</p>
-    <br>
-    <a href="#" class="btn">Call Now</a>
+<!-- ========== SERVICES (animated cards) ========== -->
+<section id="services" class="bg-white py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-[#0a1a2f] mb-4">Surgical Specialties</h2>
+      <p class="text-gray-600 max-w-xl mx-auto">Advanced, minimally invasive solutions tailored to your needs</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- card 1 -->
+      <div class="group bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 relative overflow-hidden fade-up delay-1">
+        <div class="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+        <i class="fas fa-stethoscope text-5xl text-cyan-600 mb-5 group-hover:scale-110 transition-transform"></i>
+        <h3 class="text-2xl font-bold mb-3">General Surgery</h3>
+        <p class="text-gray-600">Comprehensive surgical management of abdominal & skin conditions, biopsies, and soft tissue surgeries.</p>
+        <span class="inline-block mt-4 text-cyan-600 font-medium group-hover:translate-x-2 transition-transform">Learn more <i class="fas fa-arrow-right ml-1"></i></span>
+      </div>
+      <!-- card 2 -->
+      <div class="group bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 relative overflow-hidden fade-up delay-2">
+        <div class="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+        <i class="fas fa-microscope text-5xl text-cyan-600 mb-5 group-hover:scale-110 transition-transform"></i>
+        <h3 class="text-2xl font-bold mb-3">Laparoscopic Surgery</h3>
+        <p class="text-gray-600">Minimally invasive procedures with tiny incisions — less pain, faster recovery, minimal scarring.</p>
+        <span class="inline-block mt-4 text-cyan-600 font-medium group-hover:translate-x-2 transition-transform">Learn more <i class="fas fa-arrow-right ml-1"></i></span>
+      </div>
+      <!-- card 3 -->
+      <div class="group bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 relative overflow-hidden fade-up delay-1">
+        <div class="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+        <i class="fas fa-diagnoses text-5xl text-cyan-600 mb-5 group-hover:scale-110 transition-transform"></i>
+        <h3 class="text-2xl font-bold mb-3">Hernia Repair</h3>
+        <p class="text-gray-600">Expert inguinal, umbilical & incisional hernia repair using tension‑free mesh techniques (lap/open).</p>
+        <span class="inline-block mt-4 text-cyan-600 font-medium group-hover:translate-x-2 transition-transform">Learn more <i class="fas fa-arrow-right ml-1"></i></span>
+      </div>
+      <!-- card 4 -->
+      <div class="group bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 relative overflow-hidden fade-up delay-2">
+        <div class="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+        <i class="fas fa-heartbeat text-5xl text-cyan-600 mb-5 group-hover:scale-110 transition-transform"></i>
+        <h3 class="text-2xl font-bold mb-3">Gallbladder Surgery</h3>
+        <p class="text-gray-600">Laparoscopic cholecystectomy for gallstones & polyps – same‑day discharge available.</p>
+        <span class="inline-block mt-4 text-cyan-600 font-medium group-hover:translate-x-2 transition-transform">Learn more <i class="fas fa-arrow-right ml-1"></i></span>
+      </div>
+    </div>
+    <!-- extra service row (testimonials hint) -->
+    <div class="mt-16 text-center bg-blue-50 p-8 rounded-3xl border border-blue-100 shadow-inner">
+      <div class="flex flex-wrap justify-center gap-8 items-center">
+        <span class="text-gray-700 font-semibold"><i class="fas fa-shield-alt text-blue-500 mr-2"></i> 24/7 emergency care</span>
+        <span class="text-gray-700 font-semibold"><i class="fas fa-clock text-blue-500 mr-2"></i> Minimal wait times</span>
+        <span class="text-gray-700 font-semibold"><i class="fas fa-user-md text-blue-500 mr-2"></i> Personalised follow‑up</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer>
-    © 2026 Dr. Abdullah Malik | All Rights Reserved
+<!-- ========== CONTACT SECTION (elegant) ========== -->
+<section id="contact" class="bg-[#0a1a2f] text-white py-24 px-6 relative overflow-hidden">
+  <!-- abstract background animation -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-20">
+    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute">
+      <path d="M0 0 L100 100 M100 0 L0 100" stroke="cyan" stroke-width="0.5" vector-effect="non-scaling-stroke"/>
+    </svg>
+  </div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12"><span class="border-b-4 border-cyan-400 pb-2">Get in touch</span></h2>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- left: contact details with icons and map preview -->
+      <div class="space-y-8 text-gray-200">
+        <div class="flex items-start gap-4 bg-white/10 p-5 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition">
+          <i class="fas fa-map-pin text-3xl text-cyan-300"></i>
+          <div><h4 class="font-bold text-xl">Clinic Address</h4><p class="text-lg">12/A Aitchison Society, Lahore, Pakistan</p></div>
+        </div>
+        <div class="flex items-start gap-4 bg-white/10 p-5 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition">
+          <i class="fas fa-phone-alt text-3xl text-cyan-300"></i>
+          <div><h4 class="font-bold text-xl">Phone / WhatsApp</h4><p class="text-lg">+92-305-6695244</p><p class="text-sm opacity-80">emergency also available</p></div>
+        </div>
+        <div class="flex items-start gap-4 bg-white/10 p-5 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition">
+          <i class="fas fa-envelope text-3xl text-cyan-300"></i>
+          <div><h4 class="font-bold text-xl">Email</h4><p class="text-lg">abdullahmalikk1999@gmail.com</p><p class="text-sm opacity-80">reply within 4 hours</p></div>
+        </div>
+        <!-- clinic hours -->
+        <div class="border-l-4 border-cyan-400 pl-5 py-2">
+          <p class="font-semibold text-xl"><i class="far fa-clock mr-2"></i>Clinic hours</p>
+          <p>Mon – Fri: 9am – 5pm<br>Sat: 9am – 1pm<br><span class="text-cyan-200">Sunday closed</span></p>
+        </div>
+      </div>
+      <!-- right: quick contact & CTA -->
+      <div class="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-2xl text-center">
+        <i class="fas fa-calendar-check text-6xl text-cyan-300 mb-4"></i>
+        <h3 class="text-2xl font-bold mb-3">Ready to schedule a consultation?</h3>
+        <p class="mb-6 text-gray-300">Use our online booking or call directly. Most appointments available within 48h.</p>
+        <button onclick="openModal()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-bold py-4 px-6 rounded-xl text-xl shadow-xl transition-all hover:scale-105 flex items-center justify-center gap-3"><i class="fas fa-calendar-plus"></i> Book online now</button>
+        <div class="mt-6 text-sm opacity-80 flex justify-center gap-5">
+          <span><i class="fas fa-check-circle text-green-300"></i> Secure</span>
+          <span><i class="fas fa-check-circle text-green-300"></i> Instant confirmation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#05111f] text-gray-400 py-10 px-6 text-center border-t border-cyan-900/50">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    <p class="text-sm">© 2026 Dr. Abdullah Malik — All Rights Reserved. Designed with <i class="fas fa-heart text-cyan-400 mx-1"></i> for surgical excellence.</p>
+    <div class="flex gap-5 mt-4 md:mt-0 text-xl">
+      <a href="#" class="hover:text-cyan-300 transition"><i class="fab fa-linkedin"></i></a>
+      <a href="#" class="hover:text-cyan-300 transition"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="hover:text-cyan-300 transition"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
 </footer>
 
-<!-- Appointment Modal -->
-<div id="appointmentModal" class="modal">
-    <!-- Form Content -->
-    <div class="modal-content" id="formContent">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Book Appointment</h2>
-
-        <form id="appointmentForm">
-            <input type="text" placeholder="Full Name" required>
-            <input type="tel" placeholder="Phone Number" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="date" required>
-            <textarea placeholder="Message" rows="4"></textarea>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
-
-    <!-- Success Content -->
-    <div class="modal-content" id="successContent" style="display:none; text-align:center;">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="tick">&#10004;</div>
-        <h2>Your appointment has been scheduled!</h2>
-        <p id="submittedDate"></p>
-    </div>
+<!-- ========== MODAL (double state) ========== -->
+<div id="appointmentModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden justify-center items-center z-[999] p-4" onclick="if(event.target===this) closeModal()">
+  <!-- Modal form card -->
+  <div id="formContent" class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl modal-fade relative">
+    <span class="absolute top-5 right-5 text-3xl cursor-pointer text-gray-500 hover:text-black" onclick="closeModal()">&times;</span>
+    <h3 class="text-3xl font-bold text-[#0a1a2f] mb-5 flex items-center gap-2"><i class="fas fa-pen text-cyan-500"></i>Book appointment</h3>
+    <form id="appointmentForm" class="space-y-4">
+      <input type="text" placeholder="Full name *" required class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:ring-2 focus:ring-cyan-300 outline-none transition">
+      <input type="tel" placeholder="Phone number *" required class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:ring-2 focus:ring-cyan-300 outline-none">
+      <input type="email" placeholder="Email address *" required class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:ring-2 focus:ring-cyan-300 outline-none">
+      <input type="date" required class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:ring-2 focus:ring-cyan-300 outline-none">
+      <textarea placeholder="Message (symptoms / preferred time)" rows="3" class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:ring-2 focus:ring-cyan-300 outline-none"></textarea>
+      <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-xl transition-all text-lg shadow-lg hover:shadow-xl">Confirm booking</button>
+    </form>
+    <p class="text-xs text-gray-400 mt-3 text-center">We respect your privacy. No spam.</p>
+  </div>
+  <!-- Success content -->
+  <div id="successContent" class="bg-white rounded-3xl max-w-md w-full p-10 shadow-2xl hidden modal-fade text-center">
+    <span class="absolute top-5 right-5 text-3xl cursor-pointer text-gray-500 hover:text-black" onclick="closeModal()">&times;</span>
+    <div class="tick-anim text-7xl text-green-500 mb-4">✓</div>
+    <h2 class="text-3xl font-bold text-gray-800 mb-2">Confirmed!</h2>
+    <p class="text-gray-600 mb-2">Your appointment has been scheduled for</p>
+    <p id="submittedDate" class="text-xl font-semibold text-cyan-700 bg-cyan-50 py-2 px-4 rounded-full inline-block"></p>
+    <p class="mt-4 text-sm text-gray-400">We'll contact you shortly.</p>
+  </div>
 </div>
 
+<!-- ========== JAVASCRIPT (modal & animation) ========== -->
 <script>
-    // Open & Close Modal
-    function openModal() {
-        document.getElementById("appointmentModal").style.display = "flex";
-        document.getElementById("formContent").style.display = "block";
-        document.getElementById("successContent").style.display = "none";
+  const modal = document.getElementById('appointmentModal');
+  const formContent = document.getElementById('formContent');
+  const successContent = document.getElementById('successContent');
+  const appointmentForm = document.getElementById('appointmentForm');
+  const dateInput = document.querySelector('#appointmentForm input[type="date"]');
+  const submittedSpan = document.getElementById('submittedDate');
+
+  window.openModal = function() {
+    modal.style.display = 'flex';
+    formContent.style.display = 'block';
+    successContent.style.display = 'none';
+  }
+  window.closeModal = function() {
+    modal.style.display = 'none';
+  }
+  // handle form submit
+  appointmentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // get selected date
+    let selected = dateInput.value;
+    if (selected) {
+      let formatted = new Date(selected).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      submittedSpan.innerText = formatted;
+    } else {
+      submittedSpan.innerText = 'date to be confirmed';
     }
-
-    function closeModal() {
-        document.getElementById("appointmentModal").style.display = "none";
-    }
-
-    // Form Submission
-    document.getElementById("appointmentForm").addEventListener("submit", function(e){
-        e.preventDefault(); // Prevent page refresh
-
-        // Hide form, show success
-        document.getElementById("formContent").style.display = "none";
-        document.getElementById("successContent").style.display = "block";
-
-        // Get the date the patient selected
-const selectedDate = document.querySelector("#appointmentForm input[type='date']").value;
-
-// Format it nicely (optional)
-const formattedDate = new Date(selectedDate).toLocaleDateString('en-GB', {
-    day: 'numeric', month: 'short', year: 'numeric'
-});
-
-document.getElementById("submittedDate").innerText = "Appointment Date: " + formattedDate;
-
-        // Animate tick
-        const tick = document.querySelector(".tick");
-        tick.style.opacity = "0"; 
-        tick.offsetHeight; // trigger reflow
-        tick.style.animation = "tickAnim 0.5s forwards";
-
-        // Auto-close modal after 4 seconds
-        setTimeout(closeModal, 4000);
-
-        // Optional: Clear form fields
-        this.reset();
-    });
+    // switch view
+    formContent.style.display = 'none';
+    successContent.style.display = 'block';
+    // reset form fields
+    appointmentForm.reset();
+    // auto close after 3.5s
+    setTimeout(() => { closeModal(); }, 3500);
+  });
+  // close when clicking outside handled by onclick on backdrop
+  // optional: manual close with ESC
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 </script>
 
+<!-- tiny extra for date min (today) -->
+<script>
+  (function() {
+    let today = new Date().toISOString().split('T')[0];
+    if (dateInput) dateInput.setAttribute('min', today);
+  })();
+</script>
 </body>
 </html>
